@@ -1,0 +1,50 @@
+---
+# Feel free to add content and custom Front Matter to this file.
+# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+
+layout: home
+---
+
+<div class="row is-horizontal-align">
+    <div class="col-12 col-8-md">
+        {% if site.posts.size > 0 %}
+            {% for post in paginator.posts %}
+                <div class="media-card">
+                    <div class="row">
+                        <div class="col-12 col-4-md">
+                            <a href="{{ post.url }}">
+                                <img alt="{{ post.title }}" width="480" height="270" src="{{ post.image | replace: '.webp', '-small.webp' }}" class="is-full-width media-img">
+                            </a>
+                        </div>
+                        <div class="col-12 col-8-md">
+                            <h2 class="h6 bold"><a class="text-dark" href="{{ post.url }}">{{ post.title }}</a></h2>
+                            <p class="text-grey">{{ post.excerpt | strip_html | strip_newlines | truncate: 120 }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div class="col-12 col-4-md">
+        {% include side.html %}
+    </div>
+</div>
+
+<!-- Pagination links -->
+<div class="text-center">
+    {% if paginator.previous_page %}
+        <a href="{{ paginator.previous_page_path }}" class="previous">
+            السابق
+        </a>
+    {% else %}
+         <!--<span class="previous">السابق</span>-->
+    {% endif %}
+    <span class="page_number ">
+            الصفحة: {{ paginator.page }} من {{ paginator.total_pages }}
+    </span>
+    {% if paginator.next_page %}
+            <a href="{{ paginator.next_page_path }}" class="next">التالي</a>
+    {% else %}
+            <!--<span class="next ">Next</span>-->
+    {% endif %}
+</div>

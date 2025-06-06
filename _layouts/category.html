@@ -1,0 +1,50 @@
+---
+layout: default
+---
+
+<div class="container">
+  {% include wide-ad.html %}
+
+  <h1>قسم - "{{ page.tag }}"</h1>
+  <div class="row">
+    <div class="col-12 col-8-md">
+      {% for post in site.categories[page.tag] %}
+      <div class="media-card">
+        <div class="row">
+          <div class="col-12 col-5-md">
+            <a href="{{ post.url }}">
+              <img class="media-img is-full-width" alt="{{ post.title }}" src="{{ post.image }}"/>
+            </a>
+          </div>
+          <div class="col-12 col-7-md">
+            <h2 class="h6 bold"><a href="{{ post.url }}">{{ post.title }}</a></h2>
+            <p class="text-dark">{{ post.excerpt | strip_html | strip_newlines | truncate: 120 }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="col-12 col-4-md">
+        {% include side.html %}
+    </div>
+  </div>
+
+  <!-- Pagination links -->
+  <div class="text-center">
+    {% if paginator.previous_page %}
+    <a href="/{{site.category_dir}}/{{page.title}}{{ paginator.previous_page_path }}" class="previous">
+      السابق
+    </a>
+    {% else %}
+    <!--<span class="previous">السابق</span>-->
+    {% endif %}
+    <span class="page_number ">
+            الصفحة: {{ paginator.page }} من {{ paginator.total_pages }}
+    </span>
+    {% if paginator.next_page %}
+    <a href="/{{site.category_dir}}/{{page.title}}{{ paginator.next_page_path }}" class="next">التالي</a>
+    {% else %}
+    <!--<span class="next ">Next</span>-->
+    {% endif %}
+  </div>
+</div>

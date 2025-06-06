@@ -1,0 +1,15 @@
+---
+layout: default
+---
+<article class="post" {% if page.lang_dir %}dir="{{ page.lang_dir }}"{% endif %}>
+
+  <div class="container bg-white">
+
+    <header class="post-header">
+      <h1>{{ page.title }}</h1>
+    </header>
+
+    {{ content }}
+  </div>
+
+</article>

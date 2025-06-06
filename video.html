@@ -1,0 +1,60 @@
+---
+layout: page
+title: Video
+permalink: /video/
+lang_dir: ltr
+---
+
+<div id="app">
+  <div class="row">
+    <div class="col-12 col-8-md">
+
+      <iframe ref="videoIframe" class="is-full-width" width="480" height="270"
+        :src="'https://mobile7.org/ezoic/video/embed_humix.go?contentId=' + videoId"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+
+      <h1 class="h4">{{ videoData?.name }}</h1>
+      <div style="white-space: pre-wrap">{{ videoData?.description }}</div>
+    </div>
+    <div class="col-12 col-4-md"></div>
+  </div>
+</div>
+
+
+<script>
+  {% include vue.global.prod.js %}
+  const { createApp } = Vue
+
+  createApp({
+    mounted() {
+      var refThis = this
+      this.$refs.videoIframe.addEventListener("load", function(event) {
+          var target = event.target || event.srcElement;
+          console.log(target.innerHTML)
+          refThis.getData(target.innerHTML)
+      });
+  },
+    data() {
+      return {
+        videoId: new URLSearchParams(window.location.search).get("video"),
+        videoData: null
+      }
+    },
+    methods: {
+      getData(html_text) {
+        console.log("fetch data")
+        const owner_url = `https://${html_text.match(/(?<=DomainNameOwner":").*?(?=")/g)[0]}/humix/video/${this.videoId}`;
+
+            //const data = await fetch(owner_url)
+            //  .then(response => response.text())
+            //  .then((response) => {
+            //    return response
+            //  })
+            //  .catch(_ => false)
+//
+            //this.videoData = JSON.parse(data.match(/(?<=application\/ld\+json">)([\s\S]*?)(?=<\/script>)/)[0])
+      }
+    },
+  }).mount('#app')
+</script>

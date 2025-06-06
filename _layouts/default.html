@@ -1,0 +1,297 @@
+<!doctype html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="utf-8"/>
+    {% if page.layout == 'post' %}
+    <link rel="dns-prefetch" href="//static.addtoany.com"/>
+    {% endif %}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+	{% seo %}
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | prepend: site.baseurl | prepend: site.url }}"/>
+    <style>
+        {% include chota.min.css %}
+        
+        /* arabic */
+        @font-face {
+            font-family: Vazir;
+            font-display: swap;
+            src: url('/assets/fonts/Vazir-Regular.eot');
+            src: url('/assets/fonts/Vazir-Regular.eot?#iefix') format('embedded-opentype'),
+                 url('/assets/fonts/Vazir-Regular.woff2') format('woff2'),
+                 url('/assets/fonts/Vazir-Regular.woff') format('woff'),
+                 url('/assets/fonts/Vazir-Regular.ttf') format('truetype');
+            font-weight: normal;
+        }
+
+        
+        
+        :root {
+            --bg-color: #ffffff;
+            --bg-secondary-color: #f3f3f6;
+            --color-primary: #14854F;
+            --color-lightGrey: #f7faf9;
+            --color-grey: #747681;
+            --color-darkGrey: #3f4144;
+            --color-error: #d43939;
+            --color-success: #28bd14;
+            --grid-maxWidth: 107rem;
+            --grid-gutter: 2rem;
+            --font-size: 1.7rem;
+            --font-color: #333333;
+            --font-family-sans: "Vazir", sans-serif;
+            --font-family-mono: "Vazir", monaco, "Consolas", "Lucida Console", monospace;
+        }
+
+        html, body {width: auto!important; overflow-x: hidden!important} 
+
+        .m0 {
+            margin: 0;
+        }
+
+        .mx0 {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .my0 {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        .m1 {
+            margin: 0.5rem;
+        }
+
+        .mx1 {
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
+        }
+
+        .my1 {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .m2 {
+            margin: 1rem;
+        }
+
+        .mx2 {
+            margin-left: 1rem;
+            margin-right: 1rem;
+        }
+
+        .my2 {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .p0 {
+            padding: 0;
+        }
+
+        .px0 {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .py0 {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        .p1 {
+            padding: 0.5rem;
+        }
+
+        .px1 {
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+        }
+
+        .py1 {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+
+        .p2 {
+            padding: 1rem;
+        }
+
+        .px2 {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        .py2 {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        .h1,h1 {
+            font-size: 3rem;
+        }
+        .h2,h2 {
+            font-size: 2.75rem;
+        }
+        .h3,h3 {
+            font-size: 2.5rem;
+        }
+        .h4,h4 {
+            font-size: 2.25rem;
+        }
+        .h5,h5 {
+            font-size: 2rem;
+        }
+        .h6,h6 {
+            font-size: 1.75rem;
+        }
+        .bold{
+            font-weight: bold;
+        }
+        .bg-white{
+            background-color: #ffffff;
+        }
+        .post{
+            padding: 2rem;
+        }
+
+        p{
+            font-size: 1em;
+            color: var(--color-darkGrey);
+        }
+        blockquote {
+            border-left: 3px solid var(--color-primary);
+        }
+        .main-nav {
+            -moz-box-shadow: 0 0 2px 0 var(--color-grey);
+            -webkit-box-shadow: 0 0 2px 0 var(--color-grey);
+            box-shadow: 0 0 2px 0 var(--color-grey);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        .page-content{
+            word-wrap: break-word;
+            padding: 1rem 0;
+        }
+        .media-card{
+            margin-bottom: 2rem;
+        }
+        .media-img{
+            -moz-box-shadow: 0 0 2px 0 var(--color-grey);
+            -webkit-box-shadow: 0 0 2px 0 var(--color-grey);
+            box-shadow: 0 0 2px 0 var(--color-grey);
+            height: auto;
+            border-radius: 4px;
+        }
+        .page-footer{
+            padding: 2rem;
+        }
+        .blka{
+            margin-bottom: 1rem;
+        }
+        .sticky{
+            position: sticky;
+            top: 0;
+            padding-top: 1rem;
+        }
+        .img-fit img{
+            object-fit: contain;
+        }
+        .share-tw{
+            background-color: #55acee!important;
+        }
+        .share-fb{
+            background-color: #3b5998!important;
+        }
+        #logo { 
+            padding: 0;
+        }
+        .text-black{
+            color: #333333;
+        }
+    </style>
+</head>
+<body>
+<nav class="nav main-nav">
+    <div class="container">
+        <div class="nav-left">
+            <a id="logo" class="brand text-primary is-center" href="{{ site.baseurl }}/">
+                {% if page.layout == 'home' %}<h1 class="m0">{{ site.title }}</h1>{% else %}<span class="h1">{{ site.title }}</span>{% endif %}
+            </a>
+
+            <div class="tabs">
+                {% for my_page in site.pages %}
+					{% if my_page.title and my_page.show_in_menu %}
+						<a href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a>
+					{% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="nav-right">
+            <div class="tabs">
+                {% for category in site.categories %}
+                <a href="{{ site.url }}/category/{{ category | first | slugify }}/">{{ category | first }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<div class="page-content {% if page.layout == 'post' %}bg-light{% endif %}">
+    {{ content }}
+</div>
+
+<footer class="page-footer {% if page.layout == 'post' %}bg-white{% else %}bg-light{% endif %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <p>جميع حقوق النشر محفوظة - {{ site.title }} &copy;</p>
+                <ul>
+                    <li><a href="/privacy/">سياسة الخصوصية</a></li>
+                    <li><a href="/terms/">اتفاقية الاستخدام</a></li>
+                    <li><a href="/about/">من نحن</a></li>
+                    <li><a href="/contact/">اتصل بنا</a></li>
+                </ul>
+            </div>
+            <div class="col-6">
+                <div class="grouped">
+                    <a class="button primary outline is-full-width m1" href="#top">الرجوع لاعلى</a>
+                    <a class="button primary outline is-full-width m1" href="{{ '/feed.xml' | relative_url }}">RSS</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    {% include lozad.min.js %}
+    const observer = lozad(); 
+    observer.observe();
+</script>
+
+{% if page.layout == 'post' %}
+    <script async src="https://static.addtoany.com/menu/page.js"></script>
+{% endif %}
+
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M50WDHXC1T"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-M50WDHXC1T');
+</script>
+
+
+<script>
+    var a2a_config = a2a_config || {};
+    a2a_config.locale = "ar";
+</script>
+
+</body>
+</html>
